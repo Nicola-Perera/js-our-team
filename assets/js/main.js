@@ -4,6 +4,9 @@
     Ciascun membro del team avrá come caratteristica name, role, image
 */
 
+const teamMembers = [];
+const members = 11;
+const playersName = ['Nicola', 'Matteo', 'Marco', 'Luca', 'Giovanni', 'Alessandro', 'Stefano', 'Andrea', 'Federico', 'Tommaso', 'Filippo', ]
 
 
 const player = {
@@ -12,15 +15,12 @@ const player = {
     foto: `url(https://picsum.photos/id/1/200/300)`
 };
 
-// for (let key in player) {
-//     console.log(player[key]);
-// }
 
-const teamMemebrs = [];
-for (let i = 0; i < 11; i++) {
-    team.push(player);
+
+for (let i = 0; i < members; i++) {
+    teamMembers.push(player);
 }
-// console.log(team);
+// console.log(teamMembers);
 
 
 
