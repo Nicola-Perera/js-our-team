@@ -12,8 +12,11 @@ const soccer11Layout = {portiere: 1, difensore: 4, mediano: 3, attaccante: 2, pu
 const finalRolesLayout = revealLayout (soccer11Layout);
 console.log(finalRolesLayout);
 
-const finalMembersLayout = randomRoles_definedLayout (playersName);
+const finalMembersLayout = shuffle (playersName);
 console.log(finalMembersLayout);
+
+const finalTeam = randomRolesToMembers (finalRolesLayout, finalMembersLayout);
+console.log(finalTeam);
 
 
 
@@ -34,9 +37,10 @@ for (let key in soccer11Layout) {
 return rolesList;
 }      
 
-//la funzione restituisce sempre un layout definito dal primo paramtero scegliendo i membri a caso dalla lista del secondo parametro
-function randomRoles_definedLayout (playersName) {
+//la funzione mescola casualmente l'ordine degli elementi della lista inserita come parametro
+function shuffle (playersName) {
     const membersLayout = [];
+    const shuffledNames = [];
     
     while (membersLayout.length < playersName.length) {
         const randomNumber = Math.floor(Math.random() * playersName.length);
@@ -44,5 +48,23 @@ function randomRoles_definedLayout (playersName) {
             membersLayout.push(randomNumber)
         }
     }
-    return membersLayout;
+    for (let i = 0; i < playersName.length; i++) {
+        shuffledNames.push(playersName[membersLayout[i]])
+    }
+
+    return shuffledNames;
+}
+
+// la funzione assegna ogni ruolo al corrispondente membro della squadra
+function randomRolesToMembers (finalRolesLayout, finalMembersLayout) {
+    const team = [];
+    const range = finalRolesLayout.length;
+    for (let i = 0; i < range; i++) {
+        let player = {
+            name: finalMembersLayout[i],
+            ruolo: finalRolesLayout[i]
+        }
+        team.push(player);
+    }
+    return team;
 }
